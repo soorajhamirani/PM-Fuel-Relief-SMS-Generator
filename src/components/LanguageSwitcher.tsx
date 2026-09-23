@@ -20,7 +20,7 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ lang, onLang
 
   return (
     <div
-      className="fixed top-2.5 sm:top-3.5 right-3 sm:right-6 z-50 text-slate-800"
+      className="relative inline-block text-slate-800"
       dir="ltr"
       style={{ direction: 'ltr' }}
     >
@@ -28,13 +28,13 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ lang, onLang
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className="flex items-center gap-2 px-3 py-2 bg-white/95 hover:bg-white text-slate-900 border border-slate-300/90 rounded-xl text-xs sm:text-sm font-bold shadow-md hover:shadow-lg backdrop-blur-md transition-all active:scale-95"
+          className="flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-2 bg-white/95 hover:bg-white text-slate-900 border border-slate-300/90 rounded-xl text-xs sm:text-sm font-bold shadow-xs hover:shadow-md backdrop-blur-md transition-all active:scale-95"
           aria-expanded={isOpen}
           aria-haspopup="true"
           title="Select Language"
         >
-          <span className="text-base leading-none">{current.flag}</span>
-          <span className="font-semibold">{current.label}</span>
+          <span className="text-sm sm:text-base leading-none">{current.flag}</span>
+          <span className="font-semibold text-xs sm:text-sm">{current.label}</span>
           <ChevronDown
             className={`w-3.5 h-3.5 text-slate-500 transition-transform duration-200 ${
               isOpen ? 'rotate-180' : ''

@@ -3,13 +3,15 @@ import { Volume2, VolumeX, ShieldCheck } from 'lucide-react';
 import { Language } from '../types';
 import { translations } from '../translations/translations';
 import { speakText, stopSpeaking } from '../utils/speechHelper';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 interface HeaderProps {
   lang: Language;
   activeTab: string;
+  onLanguageChange?: (lang: Language) => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ lang, activeTab }) => {
+export const Header: React.FC<HeaderProps> = ({ lang, activeTab, onLanguageChange }) => {
   const t = translations[lang];
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
 
@@ -51,45 +53,45 @@ export const Header: React.FC<HeaderProps> = ({ lang, activeTab }) => {
   return (
     <header className="bg-[#005826] text-white shadow-md border-b-2 border-emerald-800 relative select-none">
       {/* Top Bar for Official Notice */}
-      <div className="bg-[#00471e] px-4 py-1.5 text-xs border-b border-[#003d1a]">
-        <div className="max-w-5xl mx-auto flex items-center justify-between flex-wrap gap-2 pr-28 sm:pr-36">
-          <div className="flex items-center space-x-2 rtl:space-x-reverse text-emerald-100">
+      <div className="bg-[#00471e] px-3 sm:px-4 py-1.5 text-xs border-b border-[#003d1a]">
+        <div className="max-w-5xl mx-auto flex items-center justify-between flex-wrap gap-x-3 gap-y-1">
+          <div className="flex items-center flex-wrap gap-x-2 gap-y-0.5 text-emerald-100 min-w-0">
             <ShieldCheck className="w-4 h-4 text-amber-300 shrink-0" />
-            <span className="font-semibold">{t.govTitle}</span>
-            <span className="text-emerald-300/60">•</span>
-            <span className="text-amber-200 font-bold">{t.shortCodeNotice}</span>
+            <span className="font-semibold text-[11px] sm:text-xs">{t.govTitle}</span>
+            <span className="text-emerald-300/60 hidden xs:inline">•</span>
+            <span className="text-amber-200 font-bold text-[11px] sm:text-xs">{t.shortCodeNotice}</span>
           </div>
 
-          <span className="text-[11px] font-bold text-emerald-100 bg-[#003816] px-2.5 py-0.5 rounded-full border border-emerald-600/40">
+          <span className="text-[10px] sm:text-[11px] font-bold text-emerald-100 bg-[#003816] px-2 sm:px-2.5 py-0.5 rounded-full border border-emerald-600/40 shrink-0">
             {t.freeSmsBadge}
           </span>
         </div>
       </div>
 
       {/* Main Header Container (dir="ltr" ensures Brand stays Left and Switcher stays Right) */}
-      <div className="max-w-5xl mx-auto px-4 py-3 sm:py-3.5" dir="ltr">
-        <div className="flex items-center justify-between gap-3 pr-28 sm:pr-36">
+      <div className="max-w-5xl mx-auto px-3 sm:px-4 py-2.5 sm:py-3.5" dir="ltr">
+        <div className="flex items-center justify-between gap-2 sm:gap-4">
           {/* Left Side: New Logo + "fuelrelief" Brand Title */}
-          <div className="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
+          <div className="flex items-center gap-2 sm:gap-3.5 min-w-0 flex-1">
             {/* Uploaded PM Fuel Relief Logo */}
             <a
               href="/"
-              className="flex items-center gap-2.5 sm:gap-3.5 group focus:outline-hidden shrink-0"
+              className="flex items-center gap-2 sm:gap-3.5 group focus:outline-hidden min-w-0 flex-1"
               title="PM Fuel Relief - 9771 SMS Generator"
             >
-              <div className="relative shrink-0 rounded-xl overflow-hidden shadow-md ring-1 ring-white/30 transition-transform group-hover:scale-105 bg-white px-2.5 py-1 sm:px-3 sm:py-1.5 flex items-center justify-center">
+              <div className="relative shrink-0 rounded-xl overflow-hidden shadow-md ring-1 ring-white/30 transition-transform group-hover:scale-105 bg-white px-2 py-1 sm:px-3 sm:py-1.5 flex items-center justify-center">
                 <img
                   src="/pm-fuel-relief-logo.png"
                   alt="PM Fuel Relief - Government of Pakistan Initiative"
-                  className="h-9 sm:h-11 md:h-12 w-auto max-w-[150px] sm:max-w-[190px] object-contain"
+                  className="h-8 sm:h-11 md:h-12 w-auto max-w-[110px] sm:max-w-[180px] object-contain"
                   loading="eager"
                 />
               </div>
 
               {/* Brand Typography & Badges */}
-              <div className="flex flex-col text-left">
+              <div className="flex flex-col text-left min-w-0 flex-1">
                 <div className="flex items-center gap-1.5 sm:gap-2">
-                  <span className="text-lg sm:text-xl md:text-2xl font-black tracking-tight text-white font-sans lowercase hidden md:inline">
+                  <span className="text-base sm:text-xl md:text-2xl font-black tracking-tight text-white font-sans lowercase hidden sm:inline">
                     fuel<span className="text-amber-400">relief</span>
                   </span>
                   <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-400 text-slate-950 font-sans shadow-xs">
@@ -97,8 +99,9 @@ export const Header: React.FC<HeaderProps> = ({ lang, activeTab }) => {
                   </span>
                 </div>
                 <p
-                  className="text-[11px] sm:text-xs text-emerald-100/90 font-medium font-lang leading-tight line-clamp-1"
+                  className="text-[10px] sm:text-xs text-emerald-100/90 font-medium font-lang leading-tight truncate max-w-[200px] xs:max-w-[260px] sm:max-w-none"
                   dir={lang === 'en' ? 'ltr' : 'rtl'}
+                  title={t.appSubtitle}
                 >
                   {t.appSubtitle}
                 </p>
@@ -106,12 +109,12 @@ export const Header: React.FC<HeaderProps> = ({ lang, activeTab }) => {
             </a>
           </div>
 
-          {/* Audio Voice Helper Button */}
-          <div className="flex items-center gap-2 shrink-0">
+          {/* Right Action Group: Audio Voice Helper Button & Language Switcher */}
+          <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
             <button
               onClick={handleToggleAudio}
               type="button"
-              className={`flex items-center gap-2 px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-xl font-medium text-xs sm:text-sm transition-all active:scale-95 border ${
+              className={`flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl font-medium text-xs sm:text-sm transition-all active:scale-95 border ${
                 isPlayingAudio
                   ? 'bg-amber-400 text-slate-900 border-amber-300 font-bold'
                   : 'bg-white/10 hover:bg-white/20 text-white border-white/20'
@@ -128,6 +131,10 @@ export const Header: React.FC<HeaderProps> = ({ lang, activeTab }) => {
                 {isPlayingAudio ? t.stopVoice : t.listenVoice}
               </span>
             </button>
+
+            {onLanguageChange && (
+              <LanguageSwitcher lang={lang} onLanguageChange={onLanguageChange} />
+            )}
           </div>
         </div>
       </div>

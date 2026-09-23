@@ -12,11 +12,11 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
 
   return (
     <footer className="mt-16 bg-slate-900 text-slate-400 border-t border-slate-800 py-10">
-      <div className="max-w-5xl mx-auto px-4 space-y-6">
+      <div className="max-w-5xl mx-auto px-3 sm:px-4 space-y-6">
         {/* Top Info Bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 border-b border-slate-800">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-slate-800 rounded-xl text-amber-300">
+            <div className="p-2.5 bg-slate-800 rounded-xl text-amber-300 shrink-0">
               <Fuel className="w-6 h-6" />
             </div>
             <div>
@@ -29,9 +29,9 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
             </div>
           </div>
 
-          <div className="flex items-center gap-2 text-xs font-semibold text-emerald-400 bg-emerald-950/60 px-3.5 py-1.5 rounded-xl border border-emerald-800/50">
+          <div className="flex items-center gap-2 text-[11px] sm:text-xs font-semibold text-emerald-400 bg-emerald-950/60 px-3 py-1.5 rounded-xl border border-emerald-800/50 max-w-full">
             <ShieldCheck className="w-4 h-4 text-amber-300 shrink-0" />
-            <span className="font-lang">100% Client-side • Zero Data Retention</span>
+            <span className="font-lang text-center sm:text-start">100% Client-side • Zero Data Retention</span>
           </div>
         </div>
 

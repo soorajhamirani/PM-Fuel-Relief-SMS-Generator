@@ -11,8 +11,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ lang }) => {
   const t = translations[lang];
 
   return (
-    <section className="w-full max-w-5xl mx-auto px-4 pt-4 pb-2">
-      <div className="bg-gradient-to-br from-emerald-900 via-[#005826] to-[#00471e] text-white rounded-3xl p-6 sm:p-8 shadow-md border border-emerald-700/50 relative overflow-hidden">
+    <section className="w-full max-w-5xl mx-auto px-3 sm:px-4 pt-4 pb-2">
+      <div className="bg-gradient-to-br from-emerald-900 via-[#005826] to-[#00471e] text-white rounded-3xl p-4 sm:p-8 shadow-md border border-emerald-700/50 relative overflow-hidden">
         {/* Subtle decorative background watermarks */}
         <div className="absolute -bottom-8 -right-8 opacity-10 pointer-events-none">
           <Fuel className="w-64 h-64 text-white" />
@@ -20,12 +20,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ lang }) => {
 
         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Left Text & Info */}
-          <div className="flex-1 space-y-4 text-center md:text-start">
+          <div className="flex-1 space-y-4 text-center md:text-start min-w-0">
             {/* Top Micro Tag */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-500/40 text-xs font-semibold text-emerald-200">
-              <ShieldCheck className="w-4 h-4 text-amber-300 shrink-0" />
-              <span>{t.govTitle}</span>
-              <span className="text-emerald-400">•</span>
+            <div className="inline-flex flex-wrap items-center justify-center md:justify-start gap-1.5 sm:gap-2 px-3 py-1.5 rounded-2xl sm:rounded-full bg-emerald-950/60 border border-emerald-500/40 text-[11px] sm:text-xs font-semibold text-emerald-200 max-w-full">
+              <div className="flex items-center gap-1.5 shrink-0">
+                <ShieldCheck className="w-4 h-4 text-amber-300 shrink-0" />
+                <span>{t.govTitle}</span>
+              </div>
+              <span className="text-emerald-400 hidden xs:inline">•</span>
               <span className="text-amber-300 font-bold">{t.shortCodeNotice}</span>
             </div>
 

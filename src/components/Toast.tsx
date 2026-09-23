@@ -10,7 +10,7 @@ interface ToastProps {
 
 export const Toast: React.FC<ToastProps> = ({ toasts, onDismiss }) => {
   return (
-    <div className="fixed bottom-5 ltr:right-5 rtl:left-5 z-50 flex flex-col gap-2 max-w-sm w-full pointer-events-none px-4 sm:px-0">
+    <div className="fixed bottom-4 inset-x-4 sm:inset-x-auto sm:ltr:right-5 sm:rtl:left-5 z-50 flex flex-col gap-2 max-w-sm sm:w-full pointer-events-none">
       <AnimatePresence>
         {toasts.map((toast) => {
           return (

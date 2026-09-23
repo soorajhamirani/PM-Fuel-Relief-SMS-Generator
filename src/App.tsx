@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
-import { LanguageSwitcher } from './components/LanguageSwitcher';
 import { TabNav } from './components/TabNav';
 import { RegistrationForm } from './components/RegistrationForm';
 import { TokenRequestForm } from './components/TokenRequestForm';
@@ -135,12 +134,9 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-100/70 text-slate-900 font-sans relative">
-      {/* Pinned Fixed Top-Right Language Switcher (Stable across RTL & LTR) */}
-      <LanguageSwitcher lang={lang} onLanguageChange={setLang} />
-
-      {/* Top Header */}
-      <Header lang={lang} activeTab={activeTab} />
+    <div className="min-h-screen flex flex-col bg-slate-100/70 text-slate-900 font-sans relative overflow-x-hidden w-full max-w-[100vw]">
+      {/* Top Header with Integrated Language & Audio Controls */}
+      <Header lang={lang} activeTab={activeTab} onLanguageChange={setLang} />
 
       {/* Modern & Professional Hero Section */}
       <HeroSection lang={lang} />
@@ -153,7 +149,7 @@ export const App: React.FC = () => {
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 w-full max-w-5xl mx-auto px-4 py-4 sm:py-6">
+      <main className="flex-1 w-full max-w-5xl mx-auto px-3 sm:px-4 py-4 sm:py-6">
         <AnimatePresence mode="wait">
           {activeTab === 'guide' ? (
             <motion.div

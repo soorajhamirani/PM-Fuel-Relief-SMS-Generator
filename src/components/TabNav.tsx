@@ -34,7 +34,7 @@ export const TabNav: React.FC<TabNavProps> = ({ activeTab, onTabChange, lang }) 
   ];
 
   return (
-    <div className="w-full max-w-5xl mx-auto px-4 pt-3 pb-1">
+    <div className="w-full max-w-5xl mx-auto px-3 sm:px-4 pt-3 pb-1">
       <div className="bg-slate-200/80 p-1.5 rounded-2xl flex flex-col sm:flex-row gap-1.5 shadow-inner border border-slate-300/70">
         {tabs.map((tab) => {
           const isActive = activeTab === tab.id;
@@ -43,7 +43,7 @@ export const TabNav: React.FC<TabNavProps> = ({ activeTab, onTabChange, lang }) 
               key={tab.id}
               type="button"
               onClick={() => onTabChange(tab.id)}
-              className={`relative flex-1 flex items-center justify-center gap-2.5 py-3 px-4 rounded-xl text-sm sm:text-base font-bold transition-all tap-target ${
+              className={`relative flex-1 flex items-center justify-center gap-2 py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl text-xs sm:text-sm md:text-base font-bold transition-all tap-target ${
                 isActive
                   ? 'text-pakgreen-950 shadow-md'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-white/40'
