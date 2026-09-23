@@ -31,7 +31,7 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
 
           <div className="flex items-center gap-2 text-[11px] sm:text-xs font-semibold text-emerald-400 bg-emerald-950/60 px-3 py-1.5 rounded-xl border border-emerald-800/50 max-w-full">
             <ShieldCheck className="w-4 h-4 text-amber-300 shrink-0" />
-            <span className="font-lang text-center sm:text-start">100% Client-side • Zero Data Retention</span>
+            <span className="font-lang text-center sm:text-start">100% Secure & We Do Not Collect Data</span>
           </div>
         </div>
 
