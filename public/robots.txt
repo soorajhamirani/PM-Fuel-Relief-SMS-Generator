@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pmfuelreliefsmsgenerator.vercel.app/sitemap.xml
